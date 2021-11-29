@@ -8,11 +8,23 @@ https://developer.android.google.cn/studio
 
 ---
 
+请把本项目和众多.zip文件 并列放置
+
+ - build-tools_r19.1-windows.zip
+ - ...
+ - android-sdk-zip-download
+
+---
+
 ### Android sdk压缩包 (19-31) (67个压缩包)
 
  - 0 前置
+   - 或者手动解压缩文件.
+     - 示例
+       - build-tools_r19.1-windows.zip
+       - build-tools_r19.1-windows
    - 请安装7z
-   - 添加C:\Program Files\7-Zip; --> 用户环境变量
+     - 添加C:\Program Files\7-Zip; --> 用户环境变量PATH
 
  - 1 使用下载工具
    - 1.1 11 12 13 选一种去下载sdk
