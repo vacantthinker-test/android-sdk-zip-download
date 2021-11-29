@@ -21,7 +21,7 @@ const storage_sdk_path = path.join('C:', 'Users', 'Public', 'Android-Sdk')
 
 function exec_create_action(create_path) {
 	let s = path.join(storage_sdk_path, create_path);
-	console.log('s', s)
+	// console.log('s', s)
 	if (!fs.existsSync(s)) {
 			fs.mkdirSync(s)
 	}

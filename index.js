@@ -9,4 +9,4 @@ const {create_sdk_sub_folder, unzip_and_move_folder} = require("./second");
 // 如果想修改 请在second.js 第20行 storage_sdk_path 变量 修改这个
 create_sdk_sub_folder();
 // 解压缩 && 移动文件夹
-// unzip_and_move_folder();
+unzip_and_move_folder();
