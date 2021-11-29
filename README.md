@@ -44,8 +44,8 @@ https://developer.android.google.cn/studio
 
 #### 使用BCompare 对比原Android sdk文件夹 和 zip解压缩后的Android sdk文件夹
 
- - 1 每一个压缩包解压缩后, 发现缺少package.xml文件
-
+ - 1 每一个压缩包 解压缩后, 发现缺少package.xml文件
+ - 2 
 
 ---
 
