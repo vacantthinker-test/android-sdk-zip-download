@@ -214,7 +214,7 @@ function patcher_dir_move(item_path) {
 				// console.log(source_dir_path__);
 				// console.log(target_dir_path)
 				fse.moveSync(source_dir_path__, target_dir_path, {overwrite: true})
-				copy_package_xml(target_dir_path, patcher);
+				copy_package_xml(target_dir_path, patcher, true);
 				
 				console.log(`${patcher} ${source_dir_path__} 文件夹移动完成`)
 				fs.rmdirSync(item_path)
