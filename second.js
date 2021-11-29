@@ -270,16 +270,24 @@ let regExp_cmdline_tools = /commandlinetools-win-[0-9]*_([\w\W]*)/
 
 function cmdline_tools_dir_move(item_path) {
 	if (regExp_cmdline_tools.test(item_path)) {
-		let sub_name = fs.readdirSync(item_path)[0]
-		let source_dir_path__ = path.join(item_path, sub_name)
-		let target_dir_path = path.join(storage_sdk_path, cmdline_tools)
-		// console.log(source_dir_path__)
-		// console.log(target_dir_path)
-		fse.moveSync(source_dir_path__, target_dir_path, {overwrite: true})
-		copy_package_xml(target_dir_path, cmdline_tools);
-		
-		console.log(`${platform_tools} ${source_dir_path__} 文件夹移动完成 ...`)
-		fs.rmdirSync(item_path)
+		let match = item_path.match(regExp_cmdline_tools)
+		if (match && match.length > 0){
+			let version = match[1]
+			// console.log(match, version)
+			
+			let sub_name = fs.readdirSync(item_path)[0]
+
+			let source_dir_path__ = path.join(item_path, sub_name)
+			let target_dir_path = path.join(storage_sdk_path, cmdline_tools, version)
+			// console.log(source_dir_path__)
+			// console.log(target_dir_path)
+			fse.moveSync(source_dir_path__, target_dir_path, {overwrite: true})
+			copy_package_xml(target_dir_path, cmdline_tools);
+
+			console.log(`${cmdline_tools} ${source_dir_path__} 文件夹移动完成 ...`)
+			fs.rmdirSync(item_path)
+			
+		}
 	}
 }
 
