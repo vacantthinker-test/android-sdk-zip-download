@@ -57,9 +57,12 @@ let regExp_dot_dotStr = /[0-9]+.[0-9]+.[0-9]+/
 let regExp_dotStr = /[0-9]+.[0-9]+/
 let regExp_number = /[0-9]+/
 
-function copy_package_xml(target_dir_path, middle_path) {
-	// let package_path = path.join(__dirname, middle_path, package_xml)
-	// fs.copyFileSync(package_path, path.join(target_dir_path, package_xml))
+function copy_package_xml(target_dir_path, middle_path, boo = false) {
+	if (boo){
+		let package_path = path.join(__dirname, middle_path, package_xml)
+		fs.copyFileSync(package_path, path.join(target_dir_path, package_xml))
+		
+	}
 }
 
 function build_tools_dir_move(item_path) {
@@ -183,7 +186,7 @@ function emulator_dir_move(item_path) {
 			// console.log(target_dir_path)
 			
 			fse.moveSync(source_dir_path__, target_dir_path, {overwrite: true})
-			copy_package_xml(target_dir_path, emulator);
+			copy_package_xml(target_dir_path, emulator, true);
 			
 			console.log(`${emulator} ${source_dir_path__} 文件夹移动完成`)
 			fs.rmdirSync(item_path)
@@ -333,12 +336,15 @@ function unzip_and_move_folder() {
 			
 		}
 	})
-	fs.copyFileSync(path.join(__dirname, '.knownPackages'),
-		path.join(storage_sdk_path,'.knownPackages'))
-	fse.copySync(path.join(__dirname, 'licenses'),
-		path.join(storage_sdk_path, 'licenses'))
 	fs.mkdirSync(path.join(storage_sdk_path, '.temp'))
 	fs.mkdirSync(path.join(storage_sdk_path, '.downloadIntermediates'))
+	fse.copySync(path.join(__dirname, 'licenses'),
+		path.join(storage_sdk_path, 'licenses'))
+	fs.copyFileSync(path.join(__dirname, '.knownPackages'),
+		path.join(storage_sdk_path,'.knownPackages'))
+	
+	console.log(`all done ---------------------------------------`)
+	console.log('')
 }
 
 module.exports = {
