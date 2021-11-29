@@ -36,9 +36,16 @@ https://developer.android.google.cn/studio
    - 1.2 等待文件下载完成.
  - 2 移动文件夹
    - node index.js
-     - 命令行设置ANDROID_HOME C:\Users\Public\AppData\Android\Sdk
+     - 命令行设置用户环境变量 ANDROID_HOME C:\Users\Public\AppData\Android\Sdk
      - 使用7z命令行解压缩zip文件
      - nodejs同步方式移动文件夹 --> C:\Users\Public\AppData\Android\Sdk
+
+---
+
+#### 使用BCompare 对比原Android sdk文件夹 和 zip解压缩后的Android sdk文件夹
+
+ - 1 每一个压缩包解压缩后, 发现缺少package.xml文件
+
 
 ---
 
