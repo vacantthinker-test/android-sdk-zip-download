@@ -17,10 +17,10 @@ const cmdline_tools = "cmdline-tools"
 //==================================================================================
 
 // android sdk 存放文件夹
-const storage_sdk_path = path.join('C:', 'Users', 'Public', 'Android-Sdk')
+const ANDROID_HOME = path.join('C:', 'Users', 'Public', 'Android-Sdk')
 
 function exec_create_action(create_path) {
-	let s = path.join(storage_sdk_path, create_path);
+	let s = path.join(ANDROID_HOME, create_path);
 	// console.log('s', s)
 	if (!fs.existsSync(s)) {
 			fs.mkdirSync(s)
@@ -29,8 +29,8 @@ function exec_create_action(create_path) {
 }
 
 function create_sdk_sub_folder() {
-	if (!fs.existsSync(storage_sdk_path)) {
-		fs.mkdirSync(storage_sdk_path)
+	if (!fs.existsSync(ANDROID_HOME)) {
+		fs.mkdirSync(ANDROID_HOME)
 	}
 
 	const arr = [
@@ -85,7 +85,7 @@ function build_tools_dir_move(item_path) {
 			if (source_dir_name !== undefined) {
 				let source_dir_path__ = path.join(item_path, source_dir_name)
 				// console.log(sdk_version, source_dir_path__);
-				let target_dir_path = path.join(storage_sdk_path, build_tools, sdk_version)
+				let target_dir_path = path.join(ANDROID_HOME, build_tools, sdk_version)
 				fse.moveSync(source_dir_path__, target_dir_path, {overwrite: true})
 				
 				copy_package_xml(target_dir_path, build_tools);
@@ -110,7 +110,7 @@ function platforms_dir_move(item_path) {
 			if (platform_version) {
 				// console.log('platform_version',platform_version)
 				let source_dir_path__ = path.join(item_path, fs.readdirSync(item_path)[0])
-				let target_dir_path = path.join(storage_sdk_path, platforms, 'android-' + platform_version)
+				let target_dir_path = path.join(ANDROID_HOME, platforms, 'android-' + platform_version)
 				// console.log('source_dir_path__', source_dir_path__)
 				// console.log('target_dir_path', target_dir_path)
 				fse.moveSync(source_dir_path__, target_dir_path, {overwrite: true})
@@ -140,7 +140,7 @@ function sources_dir_move(item_path) {
 			if (sub_name) {
 				// console.log(sub_name)
 				let source_dir_path__ = path.join(item_path, sub_name)
-				let target_dir_path = path.join(storage_sdk_path, sources, 'android-' + version)
+				let target_dir_path = path.join(ANDROID_HOME, sources, 'android-' + version)
 				// console.log('source_dir_path__', source_dir_path__)
 				// console.log('target_dir_path', target_dir_path)
 				fse.moveSync(source_dir_path__, target_dir_path, {overwrite: true})
@@ -162,7 +162,7 @@ function tools_dir_move(item_path) {
 		let sub_name = fs.readdirSync(item_path)[0]
 		// console.log(sub_name);
 		let source_dir_path__ = path.join(item_path, sub_name)
-		let target_dir_path = path.join(storage_sdk_path, tools)
+		let target_dir_path = path.join(ANDROID_HOME, tools)
 		fse.moveSync(source_dir_path__, target_dir_path, {overwrite: true})
 		copy_package_xml(target_dir_path, tools);
 		
@@ -181,7 +181,7 @@ function emulator_dir_move(item_path) {
 		// console.log(sub_name);
 		if (sub_name) {
 			let source_dir_path__ = path.join(item_path, sub_name)
-			let target_dir_path = path.join(storage_sdk_path, emulator)
+			let target_dir_path = path.join(ANDROID_HOME, emulator)
 			// console.log(source_dir_path__)
 			// console.log(target_dir_path)
 			
@@ -210,7 +210,7 @@ function patcher_dir_move(item_path) {
 			if (match && match.length > 0) {
 				let version = match[0]
 				let source_dir_path__ = path.join(item_path, sub_name)
-				let target_dir_path = path.join(storage_sdk_path, patcher, version)
+				let target_dir_path = path.join(ANDROID_HOME, patcher, version)
 				// console.log(source_dir_path__);
 				// console.log(target_dir_path)
 				fse.moveSync(source_dir_path__, target_dir_path, {overwrite: true})
@@ -237,7 +237,7 @@ function system_images_dir_move(item_path) {
 			// console.log(arch_v, android_v)
 			// fs.readdirSync(item_path, )
 			let source_dir_path__ = path.join(item_path, arch_v)
-			let target_dir_path = path.join(storage_sdk_path, system_images, 'android-' + android_v, 'google_apis_playstore', arch_v)
+			let target_dir_path = path.join(ANDROID_HOME, system_images, 'android-' + android_v, 'google_apis_playstore', arch_v)
 			// console.log(source_dir_path__);
 			// console.log(target_dir_path)
 			
@@ -257,7 +257,7 @@ function platform_tools_dir_move(item_path) {
 	if (regExp_platform_tools.test(item_path)) {
 		let sub_name = fs.readdirSync(item_path)[0]
 		let source_dir_path__ = path.join(item_path, sub_name)
-		let target_dir_path = path.join(storage_sdk_path, platform_tools)
+		let target_dir_path = path.join(ANDROID_HOME, platform_tools)
 		// console.log(source_dir_path__)
 		// console.log(target_dir_path)
 		fse.moveSync(source_dir_path__, target_dir_path, {overwrite: true})
@@ -281,7 +281,7 @@ function cmdline_tools_dir_move(item_path) {
 			let sub_name = fs.readdirSync(item_path)[0]
 
 			let source_dir_path__ = path.join(item_path, sub_name)
-			let target_dir_path = path.join(storage_sdk_path, cmdline_tools, version)
+			let target_dir_path = path.join(ANDROID_HOME, cmdline_tools, version)
 			// console.log(source_dir_path__)
 			// console.log(target_dir_path)
 			fse.moveSync(source_dir_path__, target_dir_path, {overwrite: true})
@@ -319,9 +319,11 @@ const zips_path = path.dirname(__dirname)
 // console.log(zips_path);
 const ext_zip = ".zip"
 
+const JAVA_HOME = path.join('C:', 'Program Files', 'RedHat', 'java-1.8.0-openjdk-1.8.0.312-2')
 function unzip_and_move_folder() {
 	// execSync(`SETX PATH "C:\\Program Files\\7-Zip;%PATH%"`)
-	execSync(`SETX ANDROID_HOME ${storage_sdk_path}`)
+	execSync(`SETX ANDROID_HOME ${ANDROID_HOME}`)
+	execSync(`SETX JAVA_HOME ${JAVA_HOME}`)
 	// console.log('开始工作')
 	fs.readdirSync(zips_path).forEach((item_name) => {
 		if (item_name.endsWith(ext_zip)) {
@@ -336,12 +338,12 @@ function unzip_and_move_folder() {
 			
 		}
 	})
-	fs.mkdirSync(path.join(storage_sdk_path, '.temp'))
-	fs.mkdirSync(path.join(storage_sdk_path, '.downloadIntermediates'))
+	fs.mkdirSync(path.join(ANDROID_HOME, '.temp'))
+	fs.mkdirSync(path.join(ANDROID_HOME, '.downloadIntermediates'))
 	fse.copySync(path.join(__dirname, 'licenses'),
-		path.join(storage_sdk_path, 'licenses'))
+		path.join(ANDROID_HOME, 'licenses'))
 	fs.copyFileSync(path.join(__dirname, '.knownPackages'),
-		path.join(storage_sdk_path,'.knownPackages'))
+		path.join(ANDROID_HOME,'.knownPackages'))
 	
 	console.log(`all done ---------------------------------------`)
 	console.log('')
