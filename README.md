@@ -19,7 +19,7 @@ https://developer.android.google.cn/studio
 ### Android sdk压缩包 (19-31) (67个压缩包)
 
  - 0 前置
-   - 或者手动解压缩文件.
+   - 或者手动 解压缩文件.
      - 示例
        - build-tools_r19.1-windows.zip
        - build-tools_r19.1-windows
@@ -32,8 +32,8 @@ https://developer.android.google.cn/studio
    - 1.12
      - 迅雷云盘链接：https://pan.xunlei.com/s/VMpdAplpv555Kvhe8ugwEKCfA1
      - 提取码：5sf2
-   - 1.13 百度网盘链接：
-   - 1.2 等待文件下载完成.
+   - 1.13 百度网盘链接：https://pan.baidu.com/s/1_L3u2IG2ufJk0miIsuAeDg
+     - 提取码：2gsl
  - 2 移动文件夹
    - node index.js
      - 命令行设置用户环境变量 ANDROID_HOME C:\Users\Public\AppData\Android\Sdk
