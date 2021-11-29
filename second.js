@@ -327,6 +327,8 @@ function unzip_and_move_folder() {
 	})
 	fs.copyFileSync(path.join(__dirname, '.knownPackages'),
 		path.join(storage_sdk_path,'.knownPackages'))
+	fse.copySync(path.join(__dirname, 'licenses'),
+		path.join(storage_sdk_path, 'licenses'))
 }
 
 module.exports = {
