@@ -21,15 +21,11 @@ const storage_sdk_path = path.join('C:', 'Users', 'Public', 'Android-Sdk')
 
 function exec_create_action(create_path) {
 	let s = path.join(storage_sdk_path, create_path);
-	try {
-		let stats = fs.statSync(s);
-		if (stats) {
-		
-		}
-	} catch (err) {
-		console.log(`exec_create_action ${create_path} 出错了 ...`)
-		fs.mkdirSync(s)
+	console.log('s', s)
+	if (!fs.existsSync(s)) {
+			fs.mkdirSync(s)
 	}
+
 }
 
 function create_sdk_sub_folder() {
