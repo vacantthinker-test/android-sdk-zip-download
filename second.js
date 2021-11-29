@@ -29,6 +29,10 @@ function exec_create_action(create_path) {
 }
 
 function create_sdk_sub_folder() {
+	if (!fs.existsSync(storage_sdk_path)) {
+		fs.mkdirSync(storage_sdk_path)
+	}
+
 	const arr = [
 		`${build_tools}`,
 		`${cmdline_tools}`,
